@@ -47,11 +47,13 @@ class QuizViewController: UIViewController {
         createQuestion()
     }
     
+    // sayfa geçişinde doğru sayısını sonuç sayfasındaki değişkene aktarıyoruz
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let gidilecekVC = segue.destination as! SonucViewController
         gidilecekVC.dogruSayisi = dogruSayac
     }
     
+    // soru oluşturuyouruz
     func createQuestion(){
         soruSayisiLabel.text = "\(soruSayac + 1). SORU"
         dogruLabel.text = "Doğru : \(dogruSayac)"
@@ -84,6 +86,7 @@ class QuizViewController: UIViewController {
         
     }
     
+    // tıklanan butonun cevabı doğru mu kontrolü yapıyoruz ve sayaçları ve soruyu güncelliyoruz
     func ControlAnswer(button:UIButton){
         if DogruCevap.bayrak_ad == button.titleLabel?.text {
             dogruSayac += 1
@@ -105,6 +108,8 @@ class QuizViewController: UIViewController {
         }
     }
     
+    // şıkları oluşturan butonların action'ları
+    
     @IBAction func clickA(_ sender: Any) {
         ControlAnswer(button: buttonA)
         soruSayacKontrol()
@@ -124,8 +129,4 @@ class QuizViewController: UIViewController {
         ControlAnswer(button: buttonD)
         soruSayacKontrol()
     }
-    
-    
-    
-    
 }

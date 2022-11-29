@@ -5,11 +5,15 @@
 //  Created by Selim on 28.11.2022.
 //
 
+// bu sınıfta veri tabanı işlemlerini yapıyoruz. db deki verilere bu sınıf sayesinde erişebiliyoruz
+
+
 import Foundation
 
 class Bayrakdao{
     let db:FMDatabase?
 
+    // sınıf tanımlandığı yerde db bilgilerini alıyoruz
     init(){
         let hedefPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let dbUrl = URL(fileURLWithPath: hedefPath).appendingPathComponent("bayrakquiz.sqlite")
@@ -17,7 +21,7 @@ class Bayrakdao{
         db = FMDatabase(path:dbUrl.path)
     }
     
-    // 5 sorunun doğru cevaplarını çektik
+    // db ye bağlanıp 5 sorunun doğru cevaplarını çektik sonraasında db bağlantısını kapattık
     func getRandomFlags() -> [Bayrak] {
         
         var retval = [Bayrak]()
@@ -44,6 +48,7 @@ class Bayrakdao{
         return retval
     }
     
+    // db ye bağlanıp doğru cevaptan farklı 3 ülke çektik ve db bağlantısını kapadık
     func getWrongFlags(bayrak_id:Int) -> [Bayrak] {
         
         var retval = [Bayrak]()

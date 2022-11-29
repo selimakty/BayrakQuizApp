@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         veritabaniKopyala()
     }
     
+    // veritabanını kopyalıyoruz
     func veritabaniKopyala(){
         
         let bundleYolu = Bundle.main.path(forResource: "bayrakquiz", ofType: ".sqlite")
